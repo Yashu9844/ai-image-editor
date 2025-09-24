@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { Providers } from "~/app/providers";
 import { Sparkles, ImageIcon, Zap, Target } from "lucide-react";
 import Link from "next/link";
+import { SocialAuthButtons } from "~/components/socialAuthButtons ";
 
 export default function AuthLayout({ children }: { children: ReactNode }) {
   return (
@@ -107,7 +108,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
 
             {/* Auth Form Container */}
             <div>{children}</div>
-
+              <SocialAuthButtons/>
             {/* Footer Link */}
             <p className="mt-6 text-center text-sm text-slate-600">
               Back to{" "}
