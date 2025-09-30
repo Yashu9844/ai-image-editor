@@ -2,11 +2,11 @@
 
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
-import { VariantProps, cva } from "class-variance-authority"
+import { type VariantProps, cva } from "class-variance-authority"
 import { PanelLeft } from "lucide-react"
 
-import { useIsMobile } from "src/components/hooks/use-mobile"
-import { cn } from "src/components/lib/utils"
+import { useIsMobile } from "~/hooks/use-mobile"
+import { cn } from "~/lib/utils"
 import { Button } from "src/components/ui/button"
 import { Input } from "src/components/ui/input"
 import { Separator } from "src/components/ui/separator"
