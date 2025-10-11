@@ -1,38 +1,43 @@
+import { PrismaClient } from "@prisma/client";
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
-import { polar, checkout, portal, usage, webhooks } from "@polar-sh/better-auth";
 import { Polar } from "@polar-sh/sdk";
+import { checkout, polar, portal, webhooks } from "@polar-sh/better-auth";
 import { env } from "~/env";
 import { db } from "~/server/db";
 
 const polarClient = new Polar({
-    accessToken: env.POLAR_ACCESS_TOKEN, // Use env object instead of process.env
-    server: 'sandbox'
+  accessToken: env.POLAR_ACCESS_TOKEN,
+  server: "production",
 });
 
+const prisma = new PrismaClient();
 
 export const auth = betterAuth({
-    database: prismaAdapter(db, {
-        provider: "postgresql", // or "mysql", "postgresql", ...etc
-    }),
-    baseURL: process.env.BETTER_AUTH_URL,
-    trustedOrigins: [
-        "http://localhost:3000",
-        "https://localhost:3000",
-        process.env.BETTER_AUTH_URL,
-        process.env.TUNNEL_URL,
-        process.env.PUBLIC_URL,
-        "https://2b0a32628d1c3b86f0de77e994253e60.serveo.net", // Your current Serveo URL
-    ].filter(Boolean),
-    emailAndPassword: {
-    enabled: true, 
-  }, 
+  database: prismaAdapter(prisma, {
+    provider: "postgresql",
+  }),
+  baseURL: process.env.BETTER_AUTH_URL,
+  trustedOrigins: [
+    "http://localhost:3000",
+    "https://localhost:3000",
+    process.env.BETTER_AUTH_URL,
+    process.env.TUNNEL_URL,
+    process.env.PUBLIC_URL,
+    "https://2b0a32628d1c3b86f0de77e994253e60.serveo.net",
+  ].filter((origin): origin is string => typeof origin === "string"),
+
+  emailAndPassword: {
+    enabled: true,
+  },
+
   socialProviders: {
     github: {
-      clientId: process.env.GITHUB_CLIENT_ID as string, 
-      clientSecret: process.env.GITHUB_CLIENT_SECRET as string, 
-    }, 
-  }, 
+      clientId: process.env.GITHUB_CLIENT_ID as string,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+    },
+  },
+
   plugins: [
     polar({
       client: polarClient,
@@ -68,7 +73,6 @@ export const auth = betterAuth({
             }
 
             const productId = order.data.productId;
-
             let creditsToAdd = 0;
 
             switch (productId) {
