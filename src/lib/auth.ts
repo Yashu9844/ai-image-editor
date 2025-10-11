@@ -8,7 +8,7 @@ import { db } from "~/server/db";
 
 const polarClient = new Polar({
   accessToken: env.POLAR_ACCESS_TOKEN,
-  server: "production",
+  server: "sandbox",
 });
 
 const prisma = new PrismaClient();
@@ -46,15 +46,15 @@ export const auth = betterAuth({
         checkout({
           products: [
             {
-              productId: "905bddb0-aa28-41aa-9527-1eeb4171baa2",
+              productId: "db9d7aa0-4050-40e3-9790-44c489cca621",
               slug: "small",
             },
             {
-              productId: "1e7cc0ca-9a73-454b-812e-cfe29ef296ff",
+              productId: "d9a61bef-106e-44bc-b0b4-4a08715687b8",
               slug: "medium",
             },
             {
-              productId: "905bddb0-aa28-41aa-9527-1eeb4171baa2",
+              productId: "dec0d616-9d24-44e8-9fae-01c7d12ed0d1",
               slug: "large",
             },
           ],
@@ -76,13 +76,13 @@ export const auth = betterAuth({
             let creditsToAdd = 0;
 
             switch (productId) {
-              case "905bddb0-aa28-41aa-9527-1eeb4171baa2":
+              case "db9d7aa0-4050-40e3-9790-44c489cca621":
                 creditsToAdd = 50;
                 break;
-              case "1e7cc0ca-9a73-454b-812e-cfe29ef296ff":
+              case "d9a61bef-106e-44bc-b0b4-4a08715687b8":
                 creditsToAdd = 200;
                 break;
-              case "905bddb0-aa28-41aa-9527-1eeb4171baa2":
+              case "dec0d616-9d24-44e8-9fae-01c7d12ed0d1":
                 creditsToAdd = 400;
                 break;
             }
