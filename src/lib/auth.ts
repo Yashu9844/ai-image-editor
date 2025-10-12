@@ -74,7 +74,6 @@ export const auth = betterAuth({
 
             const productId = order.data.productId;
             let creditsToAdd = 0;
-
             switch (productId) {
               case "db9d7aa0-4050-40e3-9790-44c489cca621":
                 creditsToAdd = 50;
