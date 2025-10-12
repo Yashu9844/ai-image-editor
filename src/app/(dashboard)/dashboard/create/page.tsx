@@ -69,7 +69,7 @@ const UploadExample = () => {
         }
 
         // Extract the first file from the file input
-        const file = fileInput.files[0];
+        const file = fileInput.files[0] as File;
 
         // Retrieve authentication parameters for the upload.
         let authParams;
