@@ -18,14 +18,7 @@ export const auth = betterAuth({
     provider: "postgresql",
   }),
   baseURL: process.env.BETTER_AUTH_URL,
-  trustedOrigins: [
-    "http://localhost:3000",
-    "https://localhost:3000",
-    process.env.BETTER_AUTH_URL,
-    process.env.TUNNEL_URL,
-    process.env.PUBLIC_URL,
-    "https://2b0a32628d1c3b86f0de77e994253e60.serveo.net",
-  ].filter((origin): origin is string => typeof origin === "string"),
+
 
   emailAndPassword: {
     enabled: true,
