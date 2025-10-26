@@ -157,7 +157,7 @@ export default function CreatePage() {
         console.error("Database save error:", dbError);
       }
 
-      toast.success("Upload successfull");
+      toast.success("Upload successful");
     } catch (error) {
       toast.error("Upload failed");
       console.error(error);
