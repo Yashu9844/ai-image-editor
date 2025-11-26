@@ -264,7 +264,7 @@ export default function HomePage() {
               Simple. Fast. Professional.
             </h2>
             <p className="mt-4 text-lg text-slate-600">
-              Get professional results in three simple steps
+              Get professional results in  simple steps
             </p>
           </div>
 
